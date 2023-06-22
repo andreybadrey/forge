@@ -1,0 +1,14 @@
+{
+  "item.gmod.garik_spawn_egg": "Гарик Spawn Egg",
+  "item.gmod.diego_spawn_egg": "Диего Spawn Egg",
+  "item.gmod.orri_spawn_egg": "Орри Spawn Egg",
+  "item.gmod.guard_old_camp_spawn_egg": "Стражник старого лагеря",
+
+
+  "itemGroup.nps": "NPC",
+
+
+  "entity.gmod.garik": "Гарик",
+  "entity.gmod.diego": "Диего",
+  "entity.gmod.orri": "Орри"
+}
