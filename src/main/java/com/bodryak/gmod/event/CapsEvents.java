@@ -2,6 +2,7 @@ package com.bodryak.gmod.event;
 
 import com.bodryak.gmod.GmodMod;
 import com.bodryak.gmod.network.ModMessages;
+import com.bodryak.gmod.network.s2c.mobdata.MDSyncS2CPacket;
 import com.bodryak.gmod.network.s2c.playerdata.PDSyncS2CPacket;
 import com.bodryak.gmod.variables.server.MDS;
 import com.bodryak.gmod.variables.server.PDS;
@@ -49,6 +50,7 @@ public class CapsEvents {
         @SubscribeEvent
         public static void onPlayerJoin(EntityJoinLevelEvent event) {
             if (!event.getLevel().isClientSide()) {
+
                 if (event.getEntity() instanceof ServerPlayer player) {
                     Map<String, Long> toSync = new HashMap<String, Long>();
                     player.getCapability(ProviderPDS.PLAYER_DATA).ifPresent(stats -> {
@@ -89,6 +91,11 @@ public class CapsEvents {
                         ModMessages.sendToPlayer(new PDSyncS2CPacket(toSync), player);
                     });
                 }
+                /*if (!(event.getEntity()  instanceof ServerPlayer)){
+                    event.getEntity().getCapability(ProviderMDS.MOB_DATA).ifPresent(mobs -> {
+                        ModMessages.sendToClients(new MDSyncS2CPacket(mobs.getHp(), event.getEntity().getUUID(), event.getEntity().getOnPos()));
+                    });
+                }*/
             }
         }
 

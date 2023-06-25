@@ -44,6 +44,7 @@ public class MDSyncS2CPacket {
     public boolean handle(Supplier<NetworkEvent.Context> supplier){
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
+            //System.out.println("получено " + this.hp + " " + this.entity);
             assert Minecraft.getInstance().player != null;
             Level world = Minecraft.getInstance().player.level;
             final Vec3 _center = new Vec3(this.pos.getX(), this.pos.getY(), this.pos.getZ());

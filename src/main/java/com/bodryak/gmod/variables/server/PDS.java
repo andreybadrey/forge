@@ -239,6 +239,20 @@ public class PDS {
         }
     }
 
+    public void intellectUp() {
+        if (ch_point > 0) {
+            ch_point --;
+            intellect ++;
+            mag_attack ++;
+            mag_def += 30;
+            fire_def += 30;
+            tree_def += 30;
+            water_def += 30;
+            eth_def += 30;
+            metal_def += 30;
+        }
+    }
+
     public boolean regenHP() {
         if(hp<max_hp){
             hp_buf += 0.1f;

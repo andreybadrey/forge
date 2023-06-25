@@ -20,7 +20,7 @@ public class LivingEntityDeath {
             if(event.getSource().getEntity() instanceof ServerPlayer player) {
                 Map<String, Long> toSync = new HashMap<String, Long>();
                 player.getCapability(ProviderPDS.PLAYER_DATA).ifPresent(stats -> {
-                    stats.setExp(999999999);
+                    stats.setExp(100);
                     //ModMessages.sendToPlayer(new PDSyncS2CPacket(stats.getExp()), player);
                     while (stats.getExp() > stats.getNlv()){
                         stats.lvlUp();

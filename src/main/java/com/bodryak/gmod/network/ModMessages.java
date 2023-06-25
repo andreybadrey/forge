@@ -1,10 +1,7 @@
 package com.bodryak.gmod.network;
 
 import com.bodryak.gmod.GmodMod;
-import com.bodryak.gmod.network.c2s.OpenPlayerStatsGuiC2SPacket;
-import com.bodryak.gmod.network.c2s.PDSDexterityUpC2SPacket;
-import com.bodryak.gmod.network.c2s.PDSStaminaUpC2SPacket;
-import com.bodryak.gmod.network.c2s.PDSStrengthUpC2SPacket;
+import com.bodryak.gmod.network.c2s.*;
 import com.bodryak.gmod.network.s2c.mobdata.MDSyncS2CPacket;
 import com.bodryak.gmod.network.s2c.playerdata.PDSyncS2CPacket;
 import net.minecraft.resources.ResourceLocation;
@@ -66,6 +63,16 @@ public class ModMessages {
                 .decoder(PDSDexterityUpC2SPacket::new)
                 .encoder(PDSDexterityUpC2SPacket::toBytes)
                 .consumerMainThread(PDSDexterityUpC2SPacket::handle)
+                .add();
+        net.messageBuilder(PDSIntellectUpC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PDSIntellectUpC2SPacket::new)
+                .encoder(PDSIntellectUpC2SPacket::toBytes)
+                .consumerMainThread(PDSIntellectUpC2SPacket::handle)
+                .add();
+        net.messageBuilder(MobSyncC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(MobSyncC2SPacket::new)
+                .encoder(MobSyncC2SPacket::toBytes)
+                .consumerMainThread(MobSyncC2SPacket::handle)
                 .add();
 
 

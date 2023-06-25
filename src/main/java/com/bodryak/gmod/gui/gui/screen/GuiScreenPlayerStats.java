@@ -3,6 +3,7 @@ package com.bodryak.gmod.gui.gui.screen;
 import com.bodryak.gmod.gui.gui.menu.GuiMenuPlayerStats;
 import com.bodryak.gmod.network.ModMessages;
 import com.bodryak.gmod.network.c2s.PDSDexterityUpC2SPacket;
+import com.bodryak.gmod.network.c2s.PDSIntellectUpC2SPacket;
 import com.bodryak.gmod.network.c2s.PDSStaminaUpC2SPacket;
 import com.bodryak.gmod.network.c2s.PDSStrengthUpC2SPacket;
 import com.bodryak.gmod.variables.client.PDC;
@@ -185,7 +186,9 @@ public class GuiScreenPlayerStats extends AbstractContainerScreen<GuiMenuPlayerS
             this.addRenderableWidget(new Button(this.leftPos + 150, this.topPos + 85, 8, 8, Component.literal("+"), e ->{
                 ModMessages.sendToServer(new PDSDexterityUpC2SPacket());
             }));
-            this.addRenderableWidget(new Button(this.leftPos + 150, this.topPos + 95, 8, 8, Component.literal("+"), e ->{}));
+            this.addRenderableWidget(new Button(this.leftPos + 150, this.topPos + 95, 8, 8, Component.literal("+"), e ->{
+                ModMessages.sendToServer(new PDSIntellectUpC2SPacket());
+            }));
         }
     }
 
