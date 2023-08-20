@@ -41,7 +41,7 @@ public class MobSyncC2SPacket {
         assert player != null;
         Level level = player.getLevel();
         context.enqueueWork(() -> {
-            System.out.println("Запрос на синхронизацию сущности " + this.uuid);
+            //System.out.println("Запрос на синхронизацию сущности " + this.uuid);
             final Vec3 _center = new Vec3(this.pos.getX(), this.pos.getY(), this.pos.getZ());
             List<Entity> _entfound = level.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(40 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).collect(Collectors.toList());
             for (Entity entityiterator : _entfound) {

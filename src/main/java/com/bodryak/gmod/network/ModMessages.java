@@ -3,6 +3,7 @@ package com.bodryak.gmod.network;
 import com.bodryak.gmod.GmodMod;
 import com.bodryak.gmod.network.c2s.*;
 import com.bodryak.gmod.network.s2c.mobdata.MDSyncS2CPacket;
+import com.bodryak.gmod.network.s2c.playerdata.GetBalanceS2CPacket;
 import com.bodryak.gmod.network.s2c.playerdata.PDSyncS2CPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -43,6 +44,12 @@ public class ModMessages {
                 .consumerMainThread(MDSyncS2CPacket::handle)
                 .add();
 
+        net.messageBuilder(GetBalanceS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(GetBalanceS2CPacket::new)
+                        .encoder(GetBalanceS2CPacket::toBytes)
+                                .consumerMainThread(GetBalanceS2CPacket::handle)
+                                        .add();
+
         //to server packs
         net.messageBuilder(OpenPlayerStatsGuiC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(OpenPlayerStatsGuiC2SPacket::new)
@@ -74,7 +81,21 @@ public class ModMessages {
                 .encoder(MobSyncC2SPacket::toBytes)
                 .consumerMainThread(MobSyncC2SPacket::handle)
                 .add();
-
+        net.messageBuilder(OpenGameShopGuiC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(OpenGameShopGuiC2SPacket::new)
+                .encoder(OpenGameShopGuiC2SPacket::toBytes)
+                .consumerMainThread(OpenGameShopGuiC2SPacket::handle)
+                .add();
+        net.messageBuilder(GetBalanceC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(GetBalanceC2SPacket::new)
+                .encoder(GetBalanceC2SPacket::toBytes)
+                .consumerMainThread(GetBalanceC2SPacket::handle)
+                .add();
+        net.messageBuilder(ByeAppleC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(ByeAppleC2SPacket::new)
+                .encoder(ByeAppleC2SPacket::toBytes)
+                .consumerMainThread(ByeAppleC2SPacket::handle)
+                .add();
 
     }
 

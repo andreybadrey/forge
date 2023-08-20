@@ -1,5 +1,6 @@
 package com.bodryak.gmod.gui.gui.init;
 
+import com.bodryak.gmod.gui.gui.screen.GuiScreenGameShop;
 import com.bodryak.gmod.gui.gui.screen.GuiScreenPlayerStats;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
@@ -13,6 +14,7 @@ public class Screens {
     public static void clientLoad(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             MenuScreens.register(Menus.GUI_PLAYER_STATS.get(), GuiScreenPlayerStats::new);
+            MenuScreens.register(Menus.GUI_SHOP.get(), GuiScreenGameShop::new);
         });
     }
 }

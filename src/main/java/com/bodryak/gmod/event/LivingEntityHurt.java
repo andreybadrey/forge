@@ -45,7 +45,7 @@ public class LivingEntityHurt {
                     if(stats.getHp() <= 0){
                         event.setAmount(1000f);
                     }else {
-                       // event.setAmount(0f);
+                        event.setAmount(0f);
                     }
                 });
             }
