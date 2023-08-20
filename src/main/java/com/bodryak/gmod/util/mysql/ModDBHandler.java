@@ -113,7 +113,9 @@ public class ModDBHandler {
         return buf;
     }
     public void dropBalance(String name, int balance) throws SQLException, ClassNotFoundException {
-        String query = "UPDATE players SET coins = '"+ balance +"' WHERE name = '"+ name +"';";
+        int gbalance = getBalance(name);
+        int newbalance = gbalance - balance;
+        String query = "UPDATE players SET coins = '"+ newbalance +"' WHERE name = '"+ name +"';";
         PreparedStatement statement = getConnection().prepareStatement(query);
         statement.executeUpdate();
         statement.close();
