@@ -34,7 +34,8 @@ public class SyncScaner {
             } else if (timer<0) {
                 timer = 0;
             }
-            if (event.phase == TickEvent.Phase.END) {
+            // TODO: 21.08.2023 добавить мультипоток в синхронизацию
+            if (event.phase == TickEvent.Phase.START) {
                 assert Minecraft.getInstance().player != null;
                 Level world = Minecraft.getInstance().player.level;
                 BlockPos pos = Minecraft.getInstance().player.getOnPos();
@@ -81,9 +82,6 @@ public class SyncScaner {
                 } else {
                     synced.clear();
                 }
-                //System.out.println(synced);
-                //scaner.clear();
-                //synced.clear();
             }
 
         }

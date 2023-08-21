@@ -26,37 +26,10 @@ public class ByeAppleC2SPacket {
     }
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
-        //sup = (Supplier<NetworkEvent.Context>) context;
         context.enqueueWork(() -> {
             val = context;
             MyThread myThread = new MyThread();
             myThread.start();
-
-
-
-
-            //System.out.println("Запрос Баланса");
-            //            ModDBHandler handler = new ModDBHandler();
-            //            int balance;
-            //            try {
-            //                balance = handler.getBalance(context.getSender().getName().getString());
-            //                if(balance > 120){
-            //                    ItemStack itemStack = new ItemStack(Items.ENCHANTED_GOLDEN_APPLE);
-            //                    itemStack.setCount(1);
-            //                    ItemHandlerHelper.giveItemToPlayer(context.getSender(), itemStack);
-            //                    balance -= 120;
-            //                    handler.dropBalance(context.getSender().getName().getString(), balance);
-            //                    ModMessages.sendToPlayer(new GetBalanceS2CPacket(balance), context.getSender());
-            //                    context.getSender().sendSystemMessage(Component.literal("Выполнена покупка в магазине"), false);
-            //                }
-            //                //System.out.println("Готов ответ: " + handler.getBalance(context.getSender().getName().getString()));
-            //                //ModMessages.sendToPlayer(new GetBalanceS2CPacket(handler.getBalance(context.getSender().getName().getString())), context.getSender());
-            //            } catch (SQLException e) {
-            //                throw new RuntimeException(e);
-            //            } catch (ClassNotFoundException e) {
-            //                throw new RuntimeException(e);
-            //            }
-            //
         });
         return true;
     }

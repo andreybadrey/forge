@@ -6,6 +6,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber({Dist.CLIENT})
+// TODO: 21.08.2023 delete class 
 public class SyncMobData {
     @SubscribeEvent
     public static void syncRenderMob(RenderLivingEvent.Pre event) {

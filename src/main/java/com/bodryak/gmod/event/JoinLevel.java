@@ -11,24 +11,45 @@ import java.sql.SQLException;
 
 @Mod.EventBusSubscriber
 public class JoinLevel {
+    public static EntityJoinLevelEvent val;
     @SubscribeEvent
     public static void onPlayerJoin(EntityJoinLevelEvent event){
             if(!event.getLevel().isClientSide()){
                 if(event.getEntity() instanceof ServerPlayer player){
-                    String name = player.getName().getString();
-                    ModDBHandler handler = new ModDBHandler();
-                    try {
-                        handler.registerPlayer(name);
-                        handler.setupQuestCoreForPlayer(name);
-                        if(!handler.checkQuest(name, 1)){
-                            handler.setQuest(name, 1, "new");
-                            player.sendSystemMessage(Component.literal("Получено задание: §6Начало пути"));
-                        }
-                    } catch (SQLException | ClassNotFoundException e) {
-                        e.printStackTrace();
-                    }
+                    val = event;
+                    RegisterPlayer registerPlayer = new RegisterPlayer();
+                    registerPlayer.start();
+                    SetupQuestCoreForPlayer setupQuestCoreForPlayer = new SetupQuestCoreForPlayer();
+                    setupQuestCoreForPlayer.start();
                 }
             }
 
+    }
+}
+class RegisterPlayer extends Thread {
+    @Override
+    public void run() {
+        ModDBHandler handler = new ModDBHandler();
+        try {
+            handler.registerPlayer(JoinLevel.val.getEntity().getName().getString());
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+class SetupQuestCoreForPlayer extends Thread {
+    @Override
+    public void run() {
+        ModDBHandler handler = new ModDBHandler();
+        try {
+            handler.setupQuestCoreForPlayer(JoinLevel.val.getEntity().getName().getString());
+            if(!handler.checkQuest(JoinLevel.val.getEntity().getName().getString(), 1)){
+                handler.setQuest(JoinLevel.val.getEntity().getName().getString(), 1, "new");
+                JoinLevel.val.getEntity().sendSystemMessage(Component.literal("Получено задание: §6Начало пути"));
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

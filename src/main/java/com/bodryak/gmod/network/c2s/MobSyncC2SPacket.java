@@ -20,39 +20,57 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class MobSyncC2SPacket {
-    private UUID uuid;
-    private BlockPos pos;
+    public  UUID uuid;
+    public  BlockPos pos;
+    public  ServerPlayer svp;
+    public  long hp;
+
+
 
     public MobSyncC2SPacket(UUID v, BlockPos pos) {
-        this.uuid = v;
+        uuid = v;
         this.pos = pos;
     }
     public MobSyncC2SPacket(FriendlyByteBuf buf) {
-        this.uuid = buf.readUUID();
-        this.pos = buf.readBlockPos();
+        uuid = buf.readUUID();
+        pos = buf.readBlockPos();
     }
     public void toBytes(FriendlyByteBuf buf) {
-        buf.writeUUID(this.uuid);
-        buf.writeBlockPos(this.pos);
+        buf.writeUUID(uuid);
+        buf.writeBlockPos(pos);
     }
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
         ServerPlayer player = context.getSender();
+        svp = player;
         assert player != null;
         Level level = player.getLevel();
         context.enqueueWork(() -> {
-            //System.out.println("Запрос на синхронизацию сущности " + this.uuid);
-            final Vec3 _center = new Vec3(this.pos.getX(), this.pos.getY(), this.pos.getZ());
+            System.out.println("Запрос на синхронизацию сущности " + uuid);
+            final Vec3 _center = new Vec3(pos.getX(), pos.getY(), pos.getZ());
             List<Entity> _entfound = level.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(40 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).collect(Collectors.toList());
             for (Entity entityiterator : _entfound) {
-                if (entityiterator.getUUID().toString().equals(this.uuid.toString())) {
+                if (entityiterator.getUUID().toString().equals(uuid.toString())) {
                     entityiterator.getCapability(ProviderMDS.MOB_DATA).ifPresent(mds -> {
-                        ModMessages.sendToPlayer(new MDSyncS2CPacket(mds.getHp(), this.uuid, this.pos), player);
+                        hp = mds.getHp();
+                        Thread thread = new Thread(() -> {
+                            ModMessages.sendToPlayer(new MDSyncS2CPacket(MobSyncC2SPacket.this.hp, MobSyncC2SPacket.this.uuid, MobSyncC2SPacket.this.pos), player);
+                            System.out.println("Пакет отправлен");
+                        });
+                        thread.start();
                     });
                 }
             }
 
         });
         return true;
+    }
+
+}
+class SendPack extends Thread {
+    @Override
+    public void run() {
+        //ModMessages.sendToPlayer(new MDSyncS2CPacket();
+        System.out.println("Пакет отправлен");
     }
 }
