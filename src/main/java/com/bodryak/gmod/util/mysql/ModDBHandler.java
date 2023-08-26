@@ -112,12 +112,25 @@ public class ModDBHandler {
         statement.close();
         return buf;
     }
-    public void dropBalance(String name, int balance) throws SQLException, ClassNotFoundException {
+    public boolean dropBalance(String name, int balance) throws SQLException, ClassNotFoundException {
+        System.out.println("Запрос баланса");
         int gbalance = getBalance(name);
-        int newbalance = gbalance - balance;
-        String query = "UPDATE players SET coins = '"+ newbalance +"' WHERE name = '"+ name +"';";
-        PreparedStatement statement = getConnection().prepareStatement(query);
-        statement.executeUpdate();
-        statement.close();
+        System.out.println("Баланс: " + gbalance);
+        if (gbalance >= balance) {
+            int newbalance = gbalance - balance;
+            System.out.println("Новый баланс: " + newbalance);
+            String query = "UPDATE players SET coins = '"+ newbalance +"' WHERE name = '"+ name +"';";
+            PreparedStatement statement = getConnection().prepareStatement(query);
+            if (statement.executeUpdate() > 0) {
+                statement.close();
+                return true;
+            }else {
+                statement.close();
+                return false;
+            }
+        }else {
+            return false;
+        }
+
     }
 }

@@ -21,12 +21,12 @@ import java.io.PrintStream;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Mod.EventBusSubscriber(modid = GmodMod.MODID)
+//@Mod.EventBusSubscriber(modid = GmodMod.MODID)
 public class SyncScaner {
     static Map<UUID, BlockPos> scaner = new HashMap<UUID, BlockPos>();
     static Map<UUID, BlockPos> synced = new HashMap<UUID, BlockPos>();
     static int timer = 100;
-    @SubscribeEvent
+    //@SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if(event.side == LogicalSide.CLIENT) {
             if (timer>0){
@@ -86,7 +86,7 @@ public class SyncScaner {
 
         }
     }
-    @SubscribeEvent
+    //@SubscribeEvent
     public static void onPlayerJoin(EntityJoinLevelEvent event) {
         if (event.getLevel().isClientSide() && event.getEntity() instanceof LocalPlayer) {
             timer = 100;

@@ -26,17 +26,15 @@ public class GetBalanceC2SPacket {
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
-            //System.out.println("Запрос Баланса");
-            ModDBHandler handler = new ModDBHandler();
-            try {
-                //System.out.println("Готов ответ: " + handler.getBalance(context.getSender().getName().getString()));
-                ModMessages.sendToPlayer(new GetBalanceS2CPacket(handler.getBalance(context.getSender().getName().getString())), context.getSender());
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-
+            Thread getbalance = new Thread(() -> {
+                ModDBHandler handler = new ModDBHandler();
+                try {
+                    ModMessages.sendToPlayer(new GetBalanceS2CPacket(handler.getBalance(context.getSender().getName().getString())), context.getSender());
+                } catch (SQLException | ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            getbalance.start();
         });
         return true;
     }

@@ -1,18 +1,18 @@
 package com.bodryak.gmod.event;
 
 import com.bodryak.gmod.GmodMod;
+import com.bodryak.gmod.item.ModItems;
+import com.bodryak.gmod.item.weapone.distanse.TestBow;
 import com.bodryak.gmod.network.ModMessages;
 import com.bodryak.gmod.network.s2c.mobdata.MDSyncS2CPacket;
 import com.bodryak.gmod.network.s2c.playerdata.PDSyncS2CPacket;
-import com.bodryak.gmod.variables.server.MDS;
-import com.bodryak.gmod.variables.server.PDS;
-import com.bodryak.gmod.variables.server.ProviderMDS;
-import com.bodryak.gmod.variables.server.ProviderPDS;
+import com.bodryak.gmod.variables.server.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
@@ -40,10 +40,22 @@ public class CapsEvents {
                 }
             }
         }
+
+        @SubscribeEvent
+        public static void onAttachCapabilitiesItemStack(AttachCapabilitiesEvent<ItemStack> event) {
+            if(event.getObject().getItem() instanceof TestBow){
+                //System.out.println(event.getObject().getTag());
+                //System.out.println(event.getObject().getItem().initCapabilities());
+                //event.addCapability(new ResourceLocation(GmodMod.MODID, "item_data"), new ProviderItemStak());
+                //System.out.println(event.getCapabilities());
+            }
+        }
+
         @SubscribeEvent
         public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
             event.register(PDS.class);
             event.register(MDS.class);
+            event.register(IDS.class);
         }
 
 

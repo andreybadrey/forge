@@ -1,6 +1,7 @@
 package com.bodryak.gmod.network.c2s;
 
 import com.bodryak.gmod.gui.gui.menu.GuiGameShopMenu;
+import com.bodryak.gmod.gui.gui.menu.GuiGemCraftingMenu;
 import com.bodryak.gmod.gui.gui.menu.GuiMenuPlayerStats;
 import io.netty.buffer.Unpooled;
 import net.minecraft.core.BlockPos;
@@ -50,7 +51,7 @@ public class OpenGameShopGuiC2SPacket {
 
                     @Override
                     public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-                        return new GuiGameShopMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
+                        return new GuiGemCraftingMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
                     }
                 }, _bpos);
             }

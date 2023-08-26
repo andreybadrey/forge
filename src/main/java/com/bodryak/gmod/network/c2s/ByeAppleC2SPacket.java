@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.function.Supplier;
 
 public class ByeAppleC2SPacket {
-    public static NetworkEvent.Context val;
+    // TODO: 21.08.2023 некорректная работа, перебрать логику
     public ByeAppleC2SPacket() {
 
     }
@@ -27,14 +27,33 @@ public class ByeAppleC2SPacket {
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
-            val = context;
-            MyThread myThread = new MyThread();
-            myThread.start();
+           Thread dropbalance = new Thread(() -> {
+                ModDBHandler mysql = new ModDBHandler();
+                try {
+
+                        if (mysql.dropBalance(context.getSender().getName().getString(), 120)) {
+
+                            ItemStack itemStack = new ItemStack(Items.ENCHANTED_GOLDEN_APPLE);
+                            itemStack.setCount(1);
+                            ItemHandlerHelper.giveItemToPlayer(context.getSender(), itemStack);
+
+                        }else {
+                            System.out.println("Недостаточно денег");
+                        }
+                    ModMessages.sendToPlayer(new GetBalanceS2CPacket(mysql.getBalance(context.getSender().getName().getString())), context.getSender());
+                } catch (SQLException | ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+
+            dropbalance.start();
+
         });
         return true;
     }
 }
-
+/*
 class MyThread extends Thread {
     @Override
     public void run() {
@@ -84,3 +103,4 @@ class DropBalance extends Thread {
         }
     }
 }
+*/

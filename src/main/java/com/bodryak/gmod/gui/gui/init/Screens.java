@@ -1,5 +1,6 @@
 package com.bodryak.gmod.gui.gui.init;
 
+import com.bodryak.gmod.gui.gui.screen.GuiGemCraftingScreen;
 import com.bodryak.gmod.gui.gui.screen.GuiScreenGameShop;
 import com.bodryak.gmod.gui.gui.screen.GuiScreenPlayerStats;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -15,6 +16,7 @@ public class Screens {
         event.enqueueWork(() -> {
             MenuScreens.register(Menus.GUI_PLAYER_STATS.get(), GuiScreenPlayerStats::new);
             MenuScreens.register(Menus.GUI_SHOP.get(), GuiScreenGameShop::new);
+            MenuScreens.register(Menus.GUI_GEM_CRAFTING.get(), GuiGemCraftingScreen::new);
         });
     }
 }

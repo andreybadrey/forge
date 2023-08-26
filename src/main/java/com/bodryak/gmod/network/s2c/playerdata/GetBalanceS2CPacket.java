@@ -32,6 +32,7 @@ public class GetBalanceS2CPacket {
             //System.out.println("Получен ответ: " + this.balance);
             //System.out.println(Minecraft.getInstance().screen.getTitle().getString());
             GuiScreenGameShop.balance = this.balance;
+            GuiScreenGameShop.isBlocked = false;
         });
         return true;
     }

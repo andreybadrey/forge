@@ -26,6 +26,7 @@ public class GuiScreenGameShop extends AbstractContainerScreen<GuiGameShopMenu> 
     Font font = Minecraft.getInstance().font;
 
     public static int balance;
+    public static boolean isBlocked = true;
     private String selected = "none";
     private String sub_select = "none";
 
@@ -202,7 +203,11 @@ public class GuiScreenGameShop extends AbstractContainerScreen<GuiGameShopMenu> 
                     }));
                     fbutposX += 42;
                     this.addRenderableWidget(new Button(fbutposX, fbutposY, fbutW, fbutH, Component.literal("Купить"), e ->{
-                        ModMessages.sendToServer(new ByeAppleC2SPacket());
+                        if(!isBlocked){
+                            ModMessages.sendToServer(new ByeAppleC2SPacket());
+                            isBlocked = true;
+                        }
+
                     }));
                     fbutposX += 70;
                     i--;

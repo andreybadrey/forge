@@ -1,0 +1,6 @@
+{
+    "parent": "gmod:item/test_bow",
+    "textures": {
+        "layer0": "gmod:item/test_bow/test_bow_pulling_1"
+    }
+}
