@@ -2,6 +2,7 @@ package com.bodryak.gmod.gui.gui.menu;
 
 import com.bodryak.gmod.gui.gui.init.Menus;
 import com.bodryak.gmod.item.ModItems;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
@@ -42,6 +43,8 @@ public class GuiGemCraftingMenu extends AbstractContainerMenu implements Supplie
     public int [][] gem_slots = new int[265][2];
     boolean field = false;
     boolean hasResult = false;
+
+
 
     public GuiGemCraftingMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         super(Menus.GUI_GEM_CRAFTING.get(), id);
@@ -825,9 +828,21 @@ public class GuiGemCraftingMenu extends AbstractContainerMenu implements Supplie
             this.customSlots.put(91, this.addSlot(new SlotItemHandler(internal, 91, gem_slots[91][0], gem_slots[91][1]) {
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) {
+                    if (customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_3.get()) {
+                        return stack.getItem() == ModItems.TOPAZ_1.get();
+                    }
                     return false;
                 }
-
+                @Override
+                public int getMaxStackSize()
+                {
+                    return 1;
+                }
+                @Override
+                public int getMaxStackSize(@NotNull ItemStack stack)
+                {
+                    return 1;
+                }
             }));
             this.customSlots.put(92, this.addSlot(new SlotItemHandler(internal, 92, gem_slots[92][0], gem_slots[92][1]) {
                 @Override
@@ -962,6 +977,9 @@ public class GuiGemCraftingMenu extends AbstractContainerMenu implements Supplie
                     if(customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_2.get()) {
                         return stack.getItem() == ModItems.TOPAZ_1.get();
                     }
+                    if (customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_3.get()) {
+                        return stack.getItem() == ModItems.TOPAZ_1.get();
+                    }
                     return false;
                 }
                 @Override
@@ -978,8 +996,13 @@ public class GuiGemCraftingMenu extends AbstractContainerMenu implements Supplie
             this.customSlots.put(111, this.addSlot(new SlotItemHandler(internal, 111, gem_slots[111][0], gem_slots[111][1]) {
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) {
-                    return customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_1.get() &&
-                            stack.getItem() == ModItems.TOPAZ_1.get();
+                    if(customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_1.get()) {
+                        return stack.getItem() == ModItems.TOPAZ_1.get();
+                    }
+                    if(customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_3.get()) {
+                        return stack.getItem() == ModItems.TOPAZ_2.get();
+                    }
+                    return false;
                 }
                 @Override
                 public int getMaxStackSize()
@@ -997,6 +1020,9 @@ public class GuiGemCraftingMenu extends AbstractContainerMenu implements Supplie
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) {
                     if(customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_2.get()) {
+                        return stack.getItem() == ModItems.TOPAZ_1.get();
+                    }
+                    if (customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_3.get()) {
                         return stack.getItem() == ModItems.TOPAZ_1.get();
                     }
                     return false;
@@ -1145,6 +1171,9 @@ public class GuiGemCraftingMenu extends AbstractContainerMenu implements Supplie
                     if(customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_2.get()) {
                         return stack.getItem() == ModItems.TOPAZ_1.get();
                     }
+                    if (customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_3.get()) {
+                        return stack.getItem() == ModItems.TOPAZ_1.get();
+                    }
                     return false;
                 }
                 @Override
@@ -1166,6 +1195,10 @@ public class GuiGemCraftingMenu extends AbstractContainerMenu implements Supplie
                     if(customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_2.get()) {
                         return stack.getItem() == ModItems.TOPAZ_2.get();
                     }
+                    if(customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_3.get()) {
+                        return stack.getItem() == ModItems.TOPAZ_2.get();
+                    }
+
                     return false;
                 }
                 @Override
@@ -1187,7 +1220,9 @@ public class GuiGemCraftingMenu extends AbstractContainerMenu implements Supplie
                     if(customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_2.get()) {
                         return stack.getItem() == ModItems.TOPAZ_2.get();
                     }
-
+                    if(customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_3.get()) {
+                        return stack.getItem() == ModItems.TOPAZ_2.get();
+                    }
                     return false;
                 }
                 @Override
@@ -1206,6 +1241,9 @@ public class GuiGemCraftingMenu extends AbstractContainerMenu implements Supplie
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) {
                     if(customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_2.get()) {
+                        return stack.getItem() == ModItems.TOPAZ_1.get();
+                    }
+                    if (customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_3.get()) {
                         return stack.getItem() == ModItems.TOPAZ_1.get();
                     }
                     return false;
@@ -1354,6 +1392,9 @@ public class GuiGemCraftingMenu extends AbstractContainerMenu implements Supplie
                     if(customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_2.get()) {
                         return stack.getItem() == ModItems.TOPAZ_1.get();
                     }
+                    if (customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_3.get()) {
+                        return stack.getItem() == ModItems.TOPAZ_1.get();
+                    }
                     return false;
                 }
                 @Override
@@ -1369,8 +1410,13 @@ public class GuiGemCraftingMenu extends AbstractContainerMenu implements Supplie
             this.customSlots.put(154, this.addSlot(new SlotItemHandler(internal, 154, gem_slots[154][0], gem_slots[154][1]) {
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) {
-                    return customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_1.get() &&
-                            stack.getItem() == ModItems.TOPAZ_1.get();
+                    if(customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_1.get()) {
+                        return stack.getItem() == ModItems.TOPAZ_1.get();
+                    }
+                    if(customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_3.get()) {
+                        return stack.getItem() == ModItems.TOPAZ_2.get();
+                    }
+                    return false;
                 }
                 @Override
                 public int getMaxStackSize()
@@ -1390,6 +1436,9 @@ public class GuiGemCraftingMenu extends AbstractContainerMenu implements Supplie
                     if(customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_2.get()) {
                         return stack.getItem() == ModItems.TOPAZ_1.get();
                     }
+                    if (customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_3.get()) {
+                        return stack.getItem() == ModItems.TOPAZ_1.get();
+                    }
                     return false;
                 }
                 @Override
@@ -1400,7 +1449,6 @@ public class GuiGemCraftingMenu extends AbstractContainerMenu implements Supplie
                 public int getMaxStackSize(@NotNull ItemStack stack) {
                     return 1;
                 }
-
             }));
             this.customSlots.put(156, this.addSlot(new SlotItemHandler(internal, 156, gem_slots[156][0], gem_slots[156][1]) {
                 @Override
@@ -1533,9 +1581,19 @@ public class GuiGemCraftingMenu extends AbstractContainerMenu implements Supplie
             this.customSlots.put(174, this.addSlot(new SlotItemHandler(internal, 174, gem_slots[174][0], gem_slots[174][1]) {
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) {
+                    if (customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_3.get()) {
+                        return stack.getItem() == ModItems.TOPAZ_1.get();
+                    }
                     return false;
                 }
-
+                @Override
+                public int getMaxStackSize() {
+                    return 1;
+                }
+                @Override
+                public int getMaxStackSize(@NotNull ItemStack stack) {
+                    return 1;
+                }
             }));
             this.customSlots.put(175, this.addSlot(new SlotItemHandler(internal, 175, gem_slots[175][0], gem_slots[175][1]) {
                 @Override
@@ -2371,6 +2429,26 @@ public class GuiGemCraftingMenu extends AbstractContainerMenu implements Supplie
                         }
                     }
                 }
+                if(gui.customSlots.get(0).getItem().getItem() == ModItems.TOPAZ_3.get()) {
+                    if(gui.customSlots.get(111).getItem().getItem() == ModItems.TOPAZ_2.get() &&
+                            gui.customSlots.get(132).getItem().getItem() == ModItems.TOPAZ_2.get() &&
+                            gui.customSlots.get(133).getItem().getItem() == ModItems.TOPAZ_2.get() &&
+                            gui.customSlots.get(154).getItem().getItem() == ModItems.TOPAZ_2.get()) {
+                        if(gui.customSlots.get(91).getItem().getItem() == ModItems.TOPAZ_1.get() &&
+                                gui.customSlots.get(110).getItem().getItem() == ModItems.TOPAZ_1.get() &&
+                                gui.customSlots.get(112).getItem().getItem() == ModItems.TOPAZ_1.get() &&
+                                gui.customSlots.get(131).getItem().getItem() == ModItems.TOPAZ_1.get() &&
+                                gui.customSlots.get(134).getItem().getItem() == ModItems.TOPAZ_1.get() &&
+                                gui.customSlots.get(153).getItem().getItem() == ModItems.TOPAZ_1.get() &&
+                                gui.customSlots.get(155).getItem().getItem() == ModItems.TOPAZ_1.get() &&
+                                gui.customSlots.get(174).getItem().getItem() == ModItems.TOPAZ_1.get()) {
+                            if(gui.customSlots.get(265).getItem().getItem() == Items.AIR) {
+                                gui.getSlot(265).set(new ItemStack(ModItems.TOPAZ_4.get()));
+                                gui.hasResult = true;
+                            }
+                        }
+                    }
+                }
             }
             if(gui.hasResult && gui.customSlots.get(265).getItem().getItem() == Items.AIR) {
                 for (int i = 0; i < 265; i++) {
@@ -2381,15 +2459,23 @@ public class GuiGemCraftingMenu extends AbstractContainerMenu implements Supplie
                 gui.hasResult = false;
             }
             if(gui.hasResult && gui.customSlots.get(265).getItem().getItem() != Items.AIR) {
+                int [] arr = new int[0];
                 if(gui.customSlots.get(265).getItem().getItem() == ModItems.TOPAZ_2.get()) {
-                    int [] arr = new int[] {0, 111, 132, 133, 154};
-                    for (int j : arr) {
-                        if (gui.customSlots.get(j).getItem().getItem() == Items.AIR) {
-                            gui.customSlots.get(265).getItem().shrink(1);
-                            gui.hasResult = false;
-                        }
+                   arr = new int[]{0, 111, 132, 133, 154};
+                }
+                if(gui.customSlots.get(265).getItem().getItem() == ModItems.TOPAZ_3.get()) {
+                    arr = new int[]{110, 112, 131, 132, 0, 133, 134, 153, 155};
+                }
+                if(gui.customSlots.get(265).getItem().getItem() == ModItems.TOPAZ_4.get()) {
+                    arr = new int[]{91, 110, 111, 112, 131, 132, 0 ,133, 134, 153, 154, 155, 174};
+                }
+                for (int j : arr) {
+                    if (gui.customSlots.get(j).getItem().getItem() == Items.AIR) {
+                        gui.customSlots.get(265).getItem().shrink(1);
+                        gui.hasResult = false;
                     }
                 }
+
             }
         }
 

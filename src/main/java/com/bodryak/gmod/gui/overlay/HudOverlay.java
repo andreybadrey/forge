@@ -6,6 +6,7 @@ import com.bodryak.gmod.variables.server.ProviderMDS;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiComponent;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -99,6 +100,7 @@ public class HudOverlay {
 
             GuiComponent.drawString(event.getPoseStack(), font, "LVL: " + PDC.getLvl(), 5, 70, -1);
 
+            font.draw(event.getPoseStack(), Component.literal("asdfasfafsaf").withStyle(), 10, 10, -1);
             LivingEntity target = TRACE.getEntityInCrosshair(1.0f, 20.0D);
             if (target != null) {
                 if(target_bar_x < target_bar_x_final){
