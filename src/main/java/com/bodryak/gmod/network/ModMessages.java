@@ -96,6 +96,11 @@ public class ModMessages {
                 .encoder(ByeAppleC2SPacket::toBytes)
                 .consumerMainThread(ByeAppleC2SPacket::handle)
                 .add();
+        net.messageBuilder(CraftGemC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(CraftGemC2SPacket::new)
+                .encoder(CraftGemC2SPacket::toBytes)
+                .consumerMainThread(CraftGemC2SPacket::handle)
+                .add();
 
     }
 

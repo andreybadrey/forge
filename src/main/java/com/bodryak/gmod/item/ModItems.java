@@ -78,63 +78,69 @@ public class ModItems {
 //Рубины
     public static final RegistryObject<Item> RUBIN_1 = ITEMS.register("rubin_1", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
                     new Gem.GemProperties().lvl(1).byePrise(500).sellPrise(100).inOutPrise(100, 100).rarity(Gem.Rarity.COMMON)
-                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(5, 3, 1, 1)
+                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(5, 3, 1, 3)
                             .required(null, 0)));
 
     public static final RegistryObject<Item> RUBIN_2 = ITEMS.register("rubin_2", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
                     new Gem.GemProperties().lvl(2).byePrise(2000).sellPrise(200).inOutPrise(200, 200).rarity(Gem.Rarity.COMMON)
-                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(10, 6, 2, 2)
+                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(10, 6, 2, 6)
                             .required(RUBIN_1.get(), 3)));
 
     public static final RegistryObject<Item> RUBIN_3 = ITEMS.register("rubin_3", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
                     new Gem.GemProperties().lvl(3).byePrise(3500).sellPrise(350).inOutPrise(500, 500).rarity(Gem.Rarity.COMMON)
-                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(15, 9, 3, 3)
+                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(15, 9, 3, 9)
                             .required(RUBIN_2.get(), 3)));
 
     public static final RegistryObject<Item> RUBIN_4 = ITEMS.register("rubin_4", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
                     new Gem.GemProperties().lvl(4).byePrise(5500).sellPrise(550).inOutPrise(1000, 1000).rarity(Gem.Rarity.RARE)
-                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(20, 12, 4, 4)
+                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(20, 12, 4, 12)
                             .required(RUBIN_3.get(), 3)));
 
     public static final RegistryObject<Item> RUBIN_5 = ITEMS.register("rubin_5", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
                     new Gem.GemProperties().lvl(5).byePrise(57143).sellPrise(800).inOutPrise(2000, 2000).rarity(Gem.Rarity.RARE)
-                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(26, 16, 5, 5)
+                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(26, 16, 5, 16)
                             .required(RUBIN_4.get(), 4)));
 
     public static final RegistryObject<Item> RUBIN_6 = ITEMS.register("rubin_6", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
                     new Gem.GemProperties().lvl(6).byePrise(11000).sellPrise(1100).inOutPrise(5000, 5000).rarity(Gem.Rarity.RARE)
-                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(33, 20, 6, 6)
+                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(33, 20, 6, 20)
                             .required(RUBIN_5.get(), 4)));
 
     public static final RegistryObject<Item> RUBIN_7 = ITEMS.register("rubin_7", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
                     new Gem.GemProperties().lvl(7).byePrise(18000).sellPrise(1800).inOutPrise(10000, 10000).rarity(Gem.Rarity.EPIC)
-                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(41, 25, 7, 7)
+                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(41, 25, 7, 25)
                             .required(RUBIN_6.get(), 4)));
 
     public static final RegistryObject<Item> RUBIN_8 = ITEMS.register("rubin_8", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
                     new Gem.GemProperties().lvl(8).byePrise(25000).sellPrise(2500).inOutPrise(20000, 20000).rarity(Gem.Rarity.EPIC)
-                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(53, 32, 8, 8)
+                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(53, 32, 8, 32)
                             .required(RUBIN_7.get(), 5)));
 
     public static final RegistryObject<Item> RUBIN_9 = ITEMS.register("rubin_9", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
                     new Gem.GemProperties().lvl(9).byePrise(36000).sellPrise(3600).inOutPrise(50000, 50000).rarity(Gem.Rarity.EPIC)
-                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(66, 40, 9, 9)
+                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(66, 40, 9, 40)
                             .required(RUBIN_8.get(), 5)));
 
     public static final RegistryObject<Item> RUBIN_10 = ITEMS.register("rubin_10", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
                     new Gem.GemProperties().lvl(10).byePrise(50000).sellPrise(5000).inOutPrise(100000, 100000).rarity(Gem.Rarity.EPIC)
-                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(85, 50, 10, 10)
+                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(85, 50, 10, 50)
                             .required(RUBIN_9.get(), 5)));
 
     public static final RegistryObject<Item> RUBIN_11 = ITEMS.register("rubin_11", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
                     new Gem.GemProperties().lvl(11).byePrise(200000).sellPrise(20000).inOutPrise(500000, 500000).rarity(Gem.Rarity.GOLD)
-                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(125, 75, 11, 11)
+                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(125, 75, 11, 75)
                             .required(RUBIN_10.get(), 6)));
 
     public static final RegistryObject<Item> RUBIN_12 = ITEMS.register("rubin_12", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
-                    new Gem.GemProperties().lvl(12).byePrise(200000).sellPrise(20000).inOutPrise(500000, 500000).rarity(Gem.Rarity.GOLD)
-                            .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(170, 100, 12, 12)
-                            .required(RUBIN_11.get(), 6)));
+            new Gem.GemProperties().lvl(12).byePrise(200000).sellPrise(20000).inOutPrise(500000, 500000).rarity(Gem.Rarity.GOLD)
+                    .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(170, 100, 12, 100)
+                    .required(RUBIN_11.get(), 6)));
+
+    public static final RegistryObject<Item> RUBIN_13 = ITEMS.register("rubin_13", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
+            new Gem.GemProperties().lvl(13).byePrise(400000).sellPrise(40000).inOutPrise(3000000, 3000000).rarity(Gem.Rarity.GOLD)
+                    .effects(Gem.Effect.PHIS_DEF, Gem.Effect.PHIS_ATTACK, Gem.Effect.PHIS_ATTACK, Gem.Effect.DISTANCE).boost(220, 130, 13, 130)
+                    .required(RUBIN_12.get(), 3)));
+
 //Рубины
 
 //Янтари

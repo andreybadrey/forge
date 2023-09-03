@@ -3,6 +3,8 @@ package com.bodryak.gmod.gui.gui.screen;
 import com.bodryak.gmod.gui.gui.menu.GuiAlchemistMenu;
 import com.bodryak.gmod.item.Gem;
 import com.bodryak.gmod.item.ModItems;
+import com.bodryak.gmod.network.ModMessages;
+import com.bodryak.gmod.network.c2s.CraftGemC2SPacket;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
@@ -28,6 +30,7 @@ public class GuiAlchemistScreen extends AbstractContainerScreen<GuiAlchemistMenu
     private static final ResourceLocation rubin   = new ResourceLocation("gmod:textures/gui/rubin.png");
     private static final ResourceLocation rubin11   = new ResourceLocation("gmod:textures/gui/rubin11.png");
     private static final ResourceLocation rubin12   = new ResourceLocation("gmod:textures/gui/rubin12.png");
+    private static final ResourceLocation rubin13   = new ResourceLocation("gmod:textures/gui/rubin13.png");
     private static final ResourceLocation amber   = new ResourceLocation("gmod:textures/gui/amber.png");
     private static final ResourceLocation amber11   = new ResourceLocation("gmod:textures/gui/amber11.png");
     private static final ResourceLocation amber12   = new ResourceLocation("gmod:textures/gui/amber12.png");
@@ -175,7 +178,10 @@ public class GuiAlchemistScreen extends AbstractContainerScreen<GuiAlchemistMenu
         renderButton(i, j, emerald, ModItems.EMERALD_9.get());    i += 36;
         renderButton(i, j, emerald, ModItems.EMERALD_10.get());   i += 36;
         renderButton(i, j, emerald11, ModItems.EMERALD_11.get()); i += 36;
-        renderButton(i, j, emerald12, ModItems.EMERALD_12.get());
+        renderButton(i, j, emerald12, ModItems.EMERALD_12.get()); i  = this.leftPos + 4; j += 36;
+
+        renderButton(i, j, rubin13, ModItems.RUBIN_13.get());    i += 36;
+
 
         if(select != null) {
             this.addRenderableOnly(new ImageButton(this.leftPos + 80 , this.topPos + 264 , 32, 32, 0, 0, 0, selected_image, 32, 32,
@@ -195,7 +201,12 @@ public class GuiAlchemistScreen extends AbstractContainerScreen<GuiAlchemistMenu
                 }
             }));
             this.addRenderableWidget(new Button(this.leftPos + 320, this.topPos + 264 +6, 76, 20, Component.literal("§lИзготовить"), e -> {
-                System.out.println("Click");
+                if(required_count <= item_count) {
+                    ModMessages.sendToServer(new CraftGemC2SPacket(new ItemStack(select), craft_count));
+                    item_count -= required_count;
+                    craft_count = 1;
+                    required_count = required_amount * craft_count;
+                }
             }));
         }
     }
@@ -224,6 +235,9 @@ public class GuiAlchemistScreen extends AbstractContainerScreen<GuiAlchemistMenu
                     if(res == rubin12) {
                         required_image = rubin11;
                     }
+                    if(res == rubin13) {
+                        required_image = rubin12;
+                    }
                     if(res == amber || res == amber11) {
                         required_image = amber;
                     }
@@ -243,17 +257,17 @@ public class GuiAlchemistScreen extends AbstractContainerScreen<GuiAlchemistMenu
                         required_image = emerald11;
                     }
 
-                        item_count = 0;
-                        AtomicReference<IItemHandler> _iitemhandlerref = new AtomicReference<>();
-                        Minecraft.getInstance().player.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _iitemhandlerref.set(capability));
-                        if (_iitemhandlerref.get() != null) {
-                            for (int _idx = 0; _idx < _iitemhandlerref.get().getSlots(); _idx++) {
-                                ItemStack itemstackiterator = _iitemhandlerref.get().getStackInSlot(_idx).copy();
-                                if (required_item == itemstackiterator.getItem()) {
-                                    item_count = item_count + (itemstackiterator).getCount();
-                                }
+                    item_count = 0;
+                    AtomicReference<IItemHandler> _iitemhandlerref = new AtomicReference<>();
+                    Minecraft.getInstance().player.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _iitemhandlerref.set(capability));
+                    if (_iitemhandlerref.get() != null) {
+                        for (int _idx = 0; _idx < _iitemhandlerref.get().getSlots(); _idx++) {
+                            ItemStack itemstackiterator = _iitemhandlerref.get().getStackInSlot(_idx).copy();
+                            if (required_item == itemstackiterator.getItem()) {
+                                item_count = item_count + (itemstackiterator).getCount();
                             }
                         }
+                    }
 
 
                     this.clearWidgets();
