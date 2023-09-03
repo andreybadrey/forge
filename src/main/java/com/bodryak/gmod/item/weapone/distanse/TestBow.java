@@ -133,7 +133,7 @@ public class TestBow extends BowItem {
             f = 1.0F;
         }
 
-        return 1.0F;
+        return 0.1F;
     }
 
     @Override

@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class Gem extends Item {
-    enum Effect {ACCURACY, EVASION, CHARGE, CAST}
+    enum Effect {ACCURACY, EVASION, CHARGE, CAST, PHIS_DEF, PHIS_ATTACK, DISTANCE, HP, MAG_DEF, MAG_ATTACK, MP}
     enum Rarity {COMMON, RARE, EPIC, GREEN, GOLD, ORANGE, RED}
     private final int bye_prise;
     private final int sell_prise;
@@ -28,6 +28,8 @@ public class Gem extends Item {
     private final Effect distance_effect;
     private final Effect magic_effect;
     private final int lvl;
+    public final int required_amount;
+    public final Item required_item;
 
     public Gem(Properties properties, GemProperties gemProp) {
         super(properties);
@@ -45,6 +47,8 @@ public class Gem extends Item {
         this.distance_effect = gemProp.distance_effect;
         this.magic_effect = gemProp.magic_effect;
         this.lvl = gemProp.lvl;
+        this.required_amount = gemProp.required_amount;
+        this.required_item = gemProp.required_item;
     }
 
 
@@ -87,6 +91,13 @@ public class Gem extends Item {
             case EVASION: return "Уклонение";
             case CHARGE: return "Натяжение";
             case CAST: return "Подготовка";
+            case PHIS_ATTACK: return "Физ атака";
+            case PHIS_DEF: return "Физ защита";
+            case HP: return "Здоровье";
+            case DISTANCE: return "Дальность";
+            case MAG_DEF: return "Маг защита";
+            case MAG_ATTACK: return "Маг атака";
+            case MP: return "Мана";
             default: return null;
         }
     }
@@ -101,6 +112,8 @@ public class Gem extends Item {
         Effect distance_effect;
         Effect magic_effect;
         int lvl;
+        int required_amount;
+        Item required_item;
 
         public Gem.GemProperties byePrise(int v) {
             bye_prise = v;
@@ -135,6 +148,11 @@ public class Gem extends Item {
         }
         public Gem.GemProperties lvl(int lvl) {
             this.lvl = lvl;
+            return this;
+        }
+        public Gem.GemProperties required(Item item, int amo) {
+            this.required_item = item;
+            this.required_amount = amo;
             return this;
         }
     }
