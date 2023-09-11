@@ -34,9 +34,11 @@ public class GuiAlchemistScreen extends AbstractContainerScreen<GuiAlchemistMenu
     private static final ResourceLocation amber   = new ResourceLocation("gmod:textures/gui/amber.png");
     private static final ResourceLocation amber11   = new ResourceLocation("gmod:textures/gui/amber11.png");
     private static final ResourceLocation amber12   = new ResourceLocation("gmod:textures/gui/amber12.png");
+    private static final ResourceLocation amber13   = new ResourceLocation("gmod:textures/gui/amber13.png");
     private static final ResourceLocation sapphire   = new ResourceLocation("gmod:textures/gui/sapphire.png");
     private static final ResourceLocation sapphire11   = new ResourceLocation("gmod:textures/gui/sapphire11.png");
     private static final ResourceLocation sapphire12   = new ResourceLocation("gmod:textures/gui/sapphire12.png");
+    private static final ResourceLocation sapphire13   = new ResourceLocation("gmod:textures/gui/sapphire13.png");
     private static final ResourceLocation emerald   = new ResourceLocation("gmod:textures/gui/emerald.png");
     private static final ResourceLocation emerald11   = new ResourceLocation("gmod:textures/gui/emerald11.png");
     private static final ResourceLocation emerald12   = new ResourceLocation("gmod:textures/gui/emerald12.png");
@@ -110,14 +112,14 @@ public class GuiAlchemistScreen extends AbstractContainerScreen<GuiAlchemistMenu
     @Override
     public void onClose() {
         super.onClose();
-        Minecraft.getInstance().keyboardHandler.setSendRepeatsToGui(false);
+        //this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
     }
 
     @Override
     public void init() {
         super.init();
         assert this.minecraft != null;
-        this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
+        //this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
         int i = this.leftPos + 4;
         int j = this.topPos + 4;
         renderButton(i, j, topaz, ModItems.TOPAZ_2.get());    i += 36;
@@ -180,7 +182,9 @@ public class GuiAlchemistScreen extends AbstractContainerScreen<GuiAlchemistMenu
         renderButton(i, j, emerald11, ModItems.EMERALD_11.get()); i += 36;
         renderButton(i, j, emerald12, ModItems.EMERALD_12.get()); i  = this.leftPos + 4; j += 36;
 
-        renderButton(i, j, rubin13, ModItems.RUBIN_13.get());    i += 36;
+        renderButton(i, j, rubin13, ModItems.RUBIN_13.get());       i += 36;
+        renderButton(i, j, sapphire13, ModItems.SAPPHIRE_13.get()); i += 36;
+        renderButton(i, j, amber13, ModItems.AMBER_13.get());       i += 36;
 
 
         if(select != null) {
@@ -244,11 +248,17 @@ public class GuiAlchemistScreen extends AbstractContainerScreen<GuiAlchemistMenu
                     if(res == amber12) {
                         required_image = amber11;
                     }
+                    if(res == amber13) {
+                        required_image = amber12;
+                    }
                     if(res == sapphire || res == sapphire11) {
                         required_image = sapphire;
                     }
                     if(res == sapphire12) {
                         required_image = sapphire11;
+                    }
+                    if(res == sapphire13) {
+                        required_image = sapphire12;
                     }
                     if(res == emerald || res == emerald11) {
                         required_image = emerald;

@@ -203,68 +203,78 @@ public class ModItems {
             new Gem.GemProperties().lvl(12).byePrise(200000).sellPrise(20000).inOutPrise(500000, 500000).rarity(Gem.Rarity.GOLD)
                     .effects(Gem.Effect.HP, Gem.Effect.HP, Gem.Effect.HP, Gem.Effect.HP).boost(150, 150, 150, 150)
                     .required(AMBER_11.get(), 6)));
+
+    public static final RegistryObject<Item> AMBER_13 = ITEMS.register("amber_13", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
+            new Gem.GemProperties().lvl(13).byePrise(190000000).sellPrise(200000).inOutPrise(3000000, 3000000).rarity(Gem.Rarity.GOLD)
+                    .effects(Gem.Effect.HP, Gem.Effect.HP, Gem.Effect.HP, Gem.Effect.HP).boost(200, 200, 200, 200)
+                    .required(AMBER_12.get(), 3)));
 //Янтари
 
 //Сапфиры
 public static final RegistryObject<Item> SAPPHIRE_1 = ITEMS.register("sapphire_1", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
         new Gem.GemProperties().lvl(1).byePrise(500).sellPrise(100).inOutPrise(100, 100).rarity(Gem.Rarity.COMMON)
-                .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(4, 3, 1, 1)
+                .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(4, 3, 3, 1)
                 .required(null, 0)));
 
     public static final RegistryObject<Item> SAPPHIRE_2 = ITEMS.register("sapphire_2", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
             new Gem.GemProperties().lvl(2).byePrise(2000).sellPrise(200).inOutPrise(200, 200).rarity(Gem.Rarity.COMMON)
-                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(8, 6, 2, 2)
+                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(8, 6, 6, 2)
                     .required(SAPPHIRE_1.get(), 3)));
 
     public static final RegistryObject<Item> SAPPHIRE_3 = ITEMS.register("sapphire_3", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
             new Gem.GemProperties().lvl(3).byePrise(3500).sellPrise(350).inOutPrise(500, 500).rarity(Gem.Rarity.COMMON)
-                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(12, 9, 3, 3)
+                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(12, 9, 9, 3)
                     .required(SAPPHIRE_2.get(), 3)));
 
     public static final RegistryObject<Item> SAPPHIRE_4 = ITEMS.register("sapphire_4", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
             new Gem.GemProperties().lvl(4).byePrise(5500).sellPrise(550).inOutPrise(1000, 1000).rarity(Gem.Rarity.RARE)
-                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(16, 12, 4, 4)
+                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(16, 12, 12, 4)
                     .required(SAPPHIRE_3.get(), 3)));
 
     public static final RegistryObject<Item> SAPPHIRE_5 = ITEMS.register("sapphire_5", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
             new Gem.GemProperties().lvl(5).byePrise(57143).sellPrise(800).inOutPrise(2000, 2000).rarity(Gem.Rarity.RARE)
-                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(21, 16, 5, 5)
+                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(21, 16, 16, 5)
                     .required(SAPPHIRE_4.get(), 4)));
 
     public static final RegistryObject<Item> SAPPHIRE_6 = ITEMS.register("sapphire_6", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
             new Gem.GemProperties().lvl(6).byePrise(11000).sellPrise(1100).inOutPrise(5000, 5000).rarity(Gem.Rarity.RARE)
-                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(26, 20, 6, 6)
+                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(26, 20, 20, 6)
                     .required(SAPPHIRE_5.get(), 4)));
 
     public static final RegistryObject<Item> SAPPHIRE_7 = ITEMS.register("sapphire_7", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
             new Gem.GemProperties().lvl(7).byePrise(18000).sellPrise(1800).inOutPrise(10000, 10000).rarity(Gem.Rarity.EPIC)
-                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(33, 25, 7, 7)
+                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(33, 25, 25, 7)
                     .required(SAPPHIRE_6.get(), 4)));
 
     public static final RegistryObject<Item> SAPPHIRE_8 = ITEMS.register("sapphire_8", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
             new Gem.GemProperties().lvl(8).byePrise(25000).sellPrise(2500).inOutPrise(20000, 20000).rarity(Gem.Rarity.EPIC)
-                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(42, 32, 8, 8)
+                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(42, 32, 32, 8)
                     .required(SAPPHIRE_7.get(), 5)));
 
     public static final RegistryObject<Item> SAPPHIRE_9 = ITEMS.register("sapphire_9", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
             new Gem.GemProperties().lvl(9).byePrise(36000).sellPrise(3600).inOutPrise(50000, 50000).rarity(Gem.Rarity.EPIC)
-                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(53, 40, 9, 9)
+                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(53, 40, 40, 9)
                     .required(SAPPHIRE_8.get(), 5)));
 
     public static final RegistryObject<Item> SAPPHIRE_10 = ITEMS.register("sapphire_10", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
             new Gem.GemProperties().lvl(10).byePrise(50000).sellPrise(5000).inOutPrise(100000, 100000).rarity(Gem.Rarity.EPIC)
-                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(70, 50, 10, 10)
+                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(70, 50, 50, 10)
                     .required(SAPPHIRE_9.get(), 5)));
 
     public static final RegistryObject<Item> SAPPHIRE_11 = ITEMS.register("sapphire_11", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
             new Gem.GemProperties().lvl(11).byePrise(190476190).sellPrise(10000).inOutPrise(200000, 200000).rarity(Gem.Rarity.GOLD)
-                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(100, 75, 11, 11)
+                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(100, 75, 75, 11)
                     .required(SAPPHIRE_10.get(), 6)));
 
     public static final RegistryObject<Item> SAPPHIRE_12 = ITEMS.register("sapphire_12", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
             new Gem.GemProperties().lvl(12).byePrise(200000).sellPrise(20000).inOutPrise(500000, 500000).rarity(Gem.Rarity.GOLD)
-                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(135, 100, 12, 12)
+                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(135, 100, 130, 12)
                     .required(SAPPHIRE_11.get(), 6)));
+
+    public static final RegistryObject<Item> SAPPHIRE_13 = ITEMS.register("sapphire_13", () -> new Gem(new Item.Properties().tab(ModCreativeTabs.GEMS),
+            new Gem.GemProperties().lvl(13).byePrise(190000000).sellPrise(200000).inOutPrise(3000000, 3000000).rarity(Gem.Rarity.GOLD)
+                    .effects(Gem.Effect.MAG_DEF, Gem.Effect.MAG_ATTACK, Gem.Effect.DISTANCE, Gem.Effect.MAG_ATTACK).boost(175, 130, 130, 12)
+                    .required(SAPPHIRE_12.get(), 3)));
 //Сапфиры
 
 //Изумруды

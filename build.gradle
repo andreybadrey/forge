@@ -79,7 +79,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.2-43.2.3'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.2.23'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
     jarJar(group: 'mysql', name: 'mysql-connector-java', version: '[8.0.26,8.0.33)'){
         jarJar.pin(it, "8.0.33")
